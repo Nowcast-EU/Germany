@@ -3,36 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flourish Map Embed</title>
+  <title>Germany - Constituency Projection</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: system-ui, sans-serif;
     }
 
-    /* This container ensures full viewport scaling */
+    /* Shared container setup */
     .flourish-container {
       width: 100%;
-      height: 100vh; /* fills the entire visible window height */
-      max-width: 1400px; /* optional: limit extreme stretching on ultra-wide screens */
+      position: relative;
     }
 
     iframe {
       width: 100%;
-      height: 100%;
       border: none;
+    }
+
+    /* --- Desktop view --- */
+    @media (min-width: 768px) {
+      .flourish-container {
+        /* Aspect ratio: 1 wide, 1.5 tall */
+        aspect-ratio: 1 / 1.5;
+        max-width: 1000px;   /* optional, controls max width */
+        margin: 0 auto;      /* centers horizontally */
+      }
+
+      iframe {
+        height: 100%;
+      }
+    }
+
+    /* --- Mobile view --- */
+    @media (max-width: 767px) {
+      .flourish-container {
+        height: auto;  /* let Flourish control sizing */
+      }
+
+      iframe {
+        height: auto;  /* no fixed height */
+      }
     }
   </style>
 </head>
 <body>
   <div class="flourish-container">
-    <!-- Replace this with your actual Flourish embed URL -->
-    <iframe src="https://flo.uri.sh/visualisation/21815409/embed" scrolling="no" frameborder="0"></iframe>
+    <!-- Replace this with your actual Flourish embed -->
+    <iframe src="https://flo.uri.sh/visualisation/1234567/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 </body>
 </html>
