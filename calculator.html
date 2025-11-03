@@ -204,6 +204,35 @@
   input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   input[type=number] { -moz-appearance: textfield; }
 
+  /* --- Table layout --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* keeps column widths consistent */
+}
+
+/* --- Header row --- */
+th {
+  text-align: center;      /* center text horizontally */
+  font-weight: bold;       /* make text bold */
+  height: 28px;            /* 👈 adjust header height manually */
+  vertical-align: middle;  /* center vertically too */
+}
+
+/* --- Main body rows --- */
+td {
+  height: 28px;            /* 👈 adjust main row height manually */
+  vertical-align: middle;  /* keep text vertically centered */
+  padding: 4px;            /* optional spacing */
+}
+
+/* --- Footer row (e.g., totals) --- */
+tfoot td {
+  height: 16px;            /* 👈 adjust footer height manually */
+  font-weight: bold;       /* optional */
+}
+
+
   /* ---------------- Coalition Builder Styles ---------------- */
   #coalition-builder { margin-top: 48px; }
   .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
