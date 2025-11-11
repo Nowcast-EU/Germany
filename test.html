@@ -533,26 +533,8 @@ function renderTable(){
     </tr>
   `).join('');
 
-  const inputs = document.querySelectorAll('.input-wrapper input');
-  inputs.forEach((input, index) => {
-    input.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter') { e.preventDefault(); if(inputs[index+1]) inputs[index+1].focus(); }
-    });
-    input.addEventListener('focus', () => { input.dataset.previous = input.value; input.value=''; input.style.borderColor='#cbd5e1'; });
-    input.addEventListener('blur', () => { 
-      if(input.value==='') input.value=input.dataset.previous||'0.0'; 
-      if(parseFloat(input.value) > 100) input.value='100';
-      input.style.borderColor = '#cbd5e1';
-    });
-    input.addEventListener('input', () => {
-      let val = parseFloat(input.value) || 0;
-      if(val>100){ input.value = 100; input.style.borderColor = 'red'; }
-      else input.style.borderColor = '#cbd5e1';
-      updateVoteTotal();
-      calculateBtn.style.background = '#ffa500';
-    });
-  });
-  updateVoteTotal();
+ attachInputBehaviour(calculate, updateVoteTotal);
+updateVoteTotal();
 }
 
 function updateVoteTotal() {
