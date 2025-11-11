@@ -600,8 +600,12 @@ function calculate(){
 }
 
 resetBtn.addEventListener('click', ()=>{
-  parties.forEach((p,i)=>document.getElementById(`votes-${i}`).value = defaultVotes[i].toFixed(1));
-  calculate();
+  parties.forEach((p,i)=>{
+    const input = document.getElementById(`votes-${i}`);
+    input.value = defaultVotes[i].toFixed(1);
+  });
+  updateVoteTotal();  // ✅ immediately refresh the footer total
+  calculate();         // ✅ then recalculate seats + coalition
 });
 
 /* ---------------- Coalition Builder Script ---------------- */
