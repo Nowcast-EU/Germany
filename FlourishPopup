@@ -225,7 +225,7 @@
   <div class="row page-break">
     <div class="left">
       <div class="circle" style="background-color: #999999;"></div>
-      <span style="color: #999999; font-weight: bold;">Linke:</span>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
     </div>
     <div class="middle">{{OTH1}}</div>
     <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
@@ -347,7 +347,7 @@
   <div class="row page-break">
     <div class="left">
       <div class="circle" style="background-color: #999999;"></div>
-      <span style="color: #999999; font-weight: bold;">Linke:</span>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
     </div>
     <div class="middle">{{OTH2}}</div>
     <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
@@ -469,7 +469,7 @@
   <div class="row page-break">
     <div class="left">
       <div class="circle" style="background-color: #999999;"></div>
-      <span style="color: #999999; font-weight: bold;">Linke:</span>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
     </div>
     <div class="middle">{{OTH3}}</div>
     <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
@@ -591,7 +591,7 @@
   <div class="row page-break">
     <div class="left">
       <div class="circle" style="background-color: #999999;"></div>
-      <span style="color: #999999; font-weight: bold;">Linke:</span>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
     </div>
     <div class="middle">{{OTH4}}</div>
     <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
@@ -713,7 +713,7 @@
   <div class="row page-break">
     <div class="left">
       <div class="circle" style="background-color: #999999;"></div>
-      <span style="color: #999999; font-weight: bold;">Linke:</span>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
     </div>
     <div class="middle">{{OTH5}}</div>
     <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
@@ -721,6 +721,493 @@
   <div class="divider"></div>
 {{/if}}
 
+
+
+{{#if CDU6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #000000;"></div>
+      <span style="color: #000000; font-weight: bold;">CDU:</span>
+    </div>
+    <div class="middle">{{CDU6}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if CSU6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #01154b;"></div>
+      <span style="color: #01154b; font-weight: bold;">CSU:</span>
+    </div>
+    <div class="middle">{{CSU6}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if AFD6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #19ccff;"></div>
+      <span style="color: #19ccff; font-weight: bold;">AfD:</span>
+    </div>
+    <div class="middle">{{AFD6}}</div>
+    <div class="right"><span style="color: {{Colour_A}};"><i>{{A%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if SPD6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #eb001f;"></div>
+      <span style="color: #eb001f; font-weight: bold;">SPD:</span>
+    </div>
+    <div class="middle">{{SPD6}}</div>
+    <div class="right"><span style="color: {{Colour_S}};"><i>{{S%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if GRN6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #64a12d;"></div>
+      <span style="color: #64a12d; font-weight: bold;">Grüne:</span>
+    </div>
+    <div class="middle">{{GRN6}}</div>
+    <div class="right"><span style="color: {{Colour_G}};"><i>{{G%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FDP6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #fff700;"></div>
+      <span style="color: #fff700; font-weight: bold;">FDP:</span>
+    </div>
+    <div class="middle">{{FDP6}}</div>
+    <div class="right"><span style="color: {{Colour_F}};"><i>{{F%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FW6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #ffa200;"></div>
+      <span style="color: #ffa200; font-weight: bold;">FW:</span>
+    </div>
+    <div class="middle">{{FW6}}</div>
+    <div class="right"><span style="color: {{Colour_W}};"><i>{{W%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if BSW6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #790da1;"></div>
+      <span style="color: #790da1; font-weight: bold;">BSW:</span>
+    </div>
+    <div class="middle">{{BSW6}}</div>
+    <div class="right"><span style="color: {{Colour_B}};"><i>{{B%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if LNK6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #f60ad4;"></div>
+      <span style="color: #f60ad4; font-weight: bold;">Linke:</span>
+    </div>
+    <div class="middle">{{LNK6}}</div>
+    <div class="right"><span style="color: {{Colour_L}};"><i>{{L%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if OTH6}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #999999;"></div>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
+    </div>
+    <div class="middle">{{OTH6}}</div>
+    <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+
+
+{{#if CDU7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #000000;"></div>
+      <span style="color: #000000; font-weight: bold;">CDU:</span>
+    </div>
+    <div class="middle">{{CDU7}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if CSU7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #01154b;"></div>
+      <span style="color: #01154b; font-weight: bold;">CSU:</span>
+    </div>
+    <div class="middle">{{CSU7}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if AFD7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #19ccff;"></div>
+      <span style="color: #19ccff; font-weight: bold;">AfD:</span>
+    </div>
+    <div class="middle">{{AFD7}}</div>
+    <div class="right"><span style="color: {{Colour_A}};"><i>{{A%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if SPD7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #eb001f;"></div>
+      <span style="color: #eb001f; font-weight: bold;">SPD:</span>
+    </div>
+    <div class="middle">{{SPD7}}</div>
+    <div class="right"><span style="color: {{Colour_S}};"><i>{{S%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if GRN7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #64a12d;"></div>
+      <span style="color: #64a12d; font-weight: bold;">Grüne:</span>
+    </div>
+    <div class="middle">{{GRN7}}</div>
+    <div class="right"><span style="color: {{Colour_G}};"><i>{{G%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FDP7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #fff700;"></div>
+      <span style="color: #fff700; font-weight: bold;">FDP:</span>
+    </div>
+    <div class="middle">{{FDP7}}</div>
+    <div class="right"><span style="color: {{Colour_F}};"><i>{{F%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FW7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #ffa200;"></div>
+      <span style="color: #ffa200; font-weight: bold;">FW:</span>
+    </div>
+    <div class="middle">{{FW7}}</div>
+    <div class="right"><span style="color: {{Colour_W}};"><i>{{W%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if BSW7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #790da1;"></div>
+      <span style="color: #790da1; font-weight: bold;">BSW:</span>
+    </div>
+    <div class="middle">{{BSW7}}</div>
+    <div class="right"><span style="color: {{Colour_B}};"><i>{{B%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if LNK7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #f60ad4;"></div>
+      <span style="color: #f60ad4; font-weight: bold;">Linke:</span>
+    </div>
+    <div class="middle">{{LNK7}}</div>
+    <div class="right"><span style="color: {{Colour_L}};"><i>{{L%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if OTH7}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #999999;"></div>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
+    </div>
+    <div class="middle">{{OTH7}}</div>
+    <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+
+
+{{#if CDU8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #000000;"></div>
+      <span style="color: #000000; font-weight: bold;">CDU:</span>
+    </div>
+    <div class="middle">{{CDU8}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if CSU8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #01154b;"></div>
+      <span style="color: #01154b; font-weight: bold;">CSU:</span>
+    </div>
+    <div class="middle">{{CSU8}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if AFD8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #19ccff;"></div>
+      <span style="color: #19ccff; font-weight: bold;">AfD:</span>
+    </div>
+    <div class="middle">{{AFD8}}</div>
+    <div class="right"><span style="color: {{Colour_A}};"><i>{{A%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if SPD8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #eb001f;"></div>
+      <span style="color: #eb001f; font-weight: bold;">SPD:</span>
+    </div>
+    <div class="middle">{{SPD8}}</div>
+    <div class="right"><span style="color: {{Colour_S}};"><i>{{S%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if GRN8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #64a12d;"></div>
+      <span style="color: #64a12d; font-weight: bold;">Grüne:</span>
+    </div>
+    <div class="middle">{{GRN8}}</div>
+    <div class="right"><span style="color: {{Colour_G}};"><i>{{G%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FDP8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #fff700;"></div>
+      <span style="color: #fff700; font-weight: bold;">FDP:</span>
+    </div>
+    <div class="middle">{{FDP8}}</div>
+    <div class="right"><span style="color: {{Colour_F}};"><i>{{F%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FW8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #ffa200;"></div>
+      <span style="color: #ffa200; font-weight: bold;">FW:</span>
+    </div>
+    <div class="middle">{{FW8}}</div>
+    <div class="right"><span style="color: {{Colour_W}};"><i>{{W%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if BSW8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #790da1;"></div>
+      <span style="color: #790da1; font-weight: bold;">BSW:</span>
+    </div>
+    <div class="middle">{{BSW8}}</div>
+    <div class="right"><span style="color: {{Colour_B}};"><i>{{B%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if LNK8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #f60ad4;"></div>
+      <span style="color: #f60ad4; font-weight: bold;">Linke:</span>
+    </div>
+    <div class="middle">{{LNK8}}</div>
+    <div class="right"><span style="color: {{Colour_L}};"><i>{{L%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if OTH8}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #999999;"></div>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
+    </div>
+    <div class="middle">{{OTH8}}</div>
+    <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+
+
+{{#if CDU9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #000000;"></div>
+      <span style="color: #000000; font-weight: bold;">CDU:</span>
+    </div>
+    <div class="middle">{{CDU9}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if CSU9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #01154b;"></div>
+      <span style="color: #01154b; font-weight: bold;">CSU:</span>
+    </div>
+    <div class="middle">{{CSU9}}</div>
+    <div class="right"><span style="color: {{Colour_U}};"><i>{{U%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if AFD9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #19ccff;"></div>
+      <span style="color: #19ccff; font-weight: bold;">AfD:</span>
+    </div>
+    <div class="middle">{{AFD9}}</div>
+    <div class="right"><span style="color: {{Colour_A}};"><i>{{A%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if SPD9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #eb001f;"></div>
+      <span style="color: #eb001f; font-weight: bold;">SPD:</span>
+    </div>
+    <div class="middle">{{SPD9}}</div>
+    <div class="right"><span style="color: {{Colour_S}};"><i>{{S%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if GRN9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #64a12d;"></div>
+      <span style="color: #64a12d; font-weight: bold;">Grüne:</span>
+    </div>
+    <div class="middle">{{GRN9}}</div>
+    <div class="right"><span style="color: {{Colour_G}};"><i>{{G%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FDP9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #fff700;"></div>
+      <span style="color: #fff700; font-weight: bold;">FDP:</span>
+    </div>
+    <div class="middle">{{FDP9}}</div>
+    <div class="right"><span style="color: {{Colour_F}};"><i>{{F%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if FW9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #ffa200;"></div>
+      <span style="color: #ffa200; font-weight: bold;">FW:</span>
+    </div>
+    <div class="middle">{{FW9}}</div>
+    <div class="right"><span style="color: {{Colour_W}};"><i>{{W%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if BSW9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #790da1;"></div>
+      <span style="color: #790da1; font-weight: bold;">BSW:</span>
+    </div>
+    <div class="middle">{{BSW9}}</div>
+    <div class="right"><span style="color: {{Colour_B}};"><i>{{B%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if LNK9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #f60ad4;"></div>
+      <span style="color: #f60ad4; font-weight: bold;">Linke:</span>
+    </div>
+    <div class="middle">{{LNK9}}</div>
+    <div class="right"><span style="color: {{Colour_L}};"><i>{{L%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
+
+{{#if OTH9}}
+  <div class="row page-break">
+    <div class="left">
+      <div class="circle" style="background-color: #999999;"></div>
+      <span style="color: #999999; font-weight: bold;">OTH:</span>
+    </div>
+    <div class="middle">{{OTH9}}</div>
+    <div class="right"><span style="color: {{Colour_O}};"><i>{{O%}}</i></span></div>
+  </div>
+  <div class="divider"></div>
+{{/if}}
 
 </body>
 </p>
