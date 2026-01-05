@@ -5,542 +5,325 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🇩🇪 Germany | Nowcast EU Projection</title>
 
-  <!-- Social / Thumbnail preview -->
+  <!-- Social preview -->
   <meta property="og:title" content="🇩🇪 Germany | Nowcast EU Projection">
-  <meta property="og:description" content="">
   <meta property="og:image" content="https://nowcast-eu.github.io/Germany/thumbnail.png">
   <meta property="og:url" content="https://nowcast-eu.github.io/Germany/">
   <meta property="og:type" content="website">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="🇩🇪 Germany | Nowcast EU Projection">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="https://nowcast-eu.github.io/Germany/thumbnail.png">
-
-  <!-- Favicon -->
-<link rel="icon" type="image/png" href="EU_favicon.png" />
+  <link rel="icon" type="image/png" href="EU_favicon.png" />
 
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
       font-family: system-ui, sans-serif;
+      background: #fff;
     }
+
+    /* ================= MAIN FLOURISH ================= */
 
     .flourish-container {
       width: 100%;
       position: relative;
     }
 
-    iframe {
+    .flourish-container iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
+      height: 100%;
       border: none;
-      display: block;
     }
 
-    /* --- Desktop view --- */
     @media (min-width: 768px) {
       .flourish-container {
-        /* Aspect ratio: 1 wide, 1.25 tall */
         aspect-ratio: 1 / 1.25;
         max-width: 1000px;
         margin: 0 auto;
-        position: relative;
-      }
-
-      iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
       }
     }
 
-    /* --- Mobile view --- */
     @media (max-width: 767px) {
       .flourish-container {
         aspect-ratio: 1 / 1.6;
-        width: 100%;
-        position: relative;
-      }
-
-      iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
       }
     }
 
-    /* --- Secondary content area under main embed --- */
-.secondary-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
+    /* ================= SECONDARY LAYOUT ================= */
 
-/* Desktop: two blocks side by side */
-.secondary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
+    .secondary-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-/* Shared block styling (optional – tweak as needed) */
-.secondary-block {
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 6px;
-}
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
 
-/* Mobile OR portrait: stack blocks */
-@media (max-width: 767px), (orientation: portrait) {
-  .secondary-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    @media (max-width: 767px), (orientation: portrait) {
+      .secondary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    .secondary-block {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    /* ================= BLOCK A: TAB SWITCHER ================= */
+
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .tabs {
+      position: relative;
+      display: flex;
+      background: #f2f5f9;
+      border-radius: 40px;
+      padding: 6px 10px;
+      min-width: 260px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .tab-btn.active {
+      font-weight: 600;
+    }
+
+    .tab-indicator {
+      position: absolute;
+      inset: 6px;
+      width: calc((100% - 20px) / 2);
+      background: #fff;
+      border-radius: 16px;
+      transition: transform 0.35s cubic-bezier(0.25,1,0.3,1);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* ================= BLOCK B: COALITION BUILDER ================= */
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tab-switcher {
+      display: flex;
+      position: relative;
+      background: #eee;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 34px;
+    }
+
+    .tab-button {
+      border: none;
+      background: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    .tab-slider {
+      position: absolute;
+      inset: 0;
+      width: 50%;
+      background: #fff;
+      border-radius: 12px;
+      transition: transform 0.25s ease;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .legend-item {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .legend-item.active {
+      opacity: 1;
+      font-weight: bold;
+      background: #fff;
+    }
+
+    .legend-box {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .bar-container {
+      position: relative;
+      height: 120px;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .coalition-overlay {
+      display: flex;
+      height: 100%;
+      width: 0;
+      transition: width 0.8s ease;
+    }
+
+    .segment {
+      height: 100%;
+    }
+
+    .counter {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- MAIN -->
   <div class="flourish-container">
-    <iframe src="https://flo.uri.sh/visualisation/26950934/embed" scrolling="no" frameborder="0"></iframe>
+    <iframe src="https://flo.uri.sh/visualisation/26950934/embed"></iframe>
   </div>
-</body>
-</html>
 
-<div class="secondary-container">
-  <div class="secondary-grid">
-    
-    <div class="secondary-block">
-      <!-- LEFT BLOCK CONTENT -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chart Tab Switcher</title>
-<style>
-  body {
-    font-family: system-ui, sans-serif;
-    margin: 0;
-    background: #fff;
-    color: #111;
-  }
+  <!-- SECONDARY -->
+  <div class="secondary-container">
+    <div class="secondary-grid">
 
-  /* Centered tab container */
-  .tab-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
+      <!-- BLOCK A -->
+      <div class="secondary-block">
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab-indicator"></div>
+            <button class="tab-btn active" data-tab="votes">Votes</button>
+            <button class="tab-btn" data-tab="seats">Seats</button>
+          </div>
+        </div>
 
-  .tabs {
-    position: relative;
-    display: flex;
-    background: #f2f5f9;
-    border-radius: 40px;
-    padding: 6px 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    overflow: hidden;
-    min-width: 260px;
-  }
+        <div id="votes" class="tab-content active">
+          <div class="flourish-embed" data-src="visualisation/24560280"></div>
+        </div>
 
-  .tab-btn {
-    flex: 1;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #111;
-    padding: 0.7rem 1.5rem;
-    border-radius: 20px;
-    transition: color 0.2s ease;
-    z-index: 1;
-    position: relative;
-  }
+        <div id="seats" class="tab-content">
+          <div class="flourish-embed" data-src="visualisation/24560334"></div>
+        </div>
+      </div>
 
-  .tab-btn.active {
-    color: #000;
-    font-weight: 600;
-  }
+      <!-- BLOCK B -->
+      <div class="secondary-block">
+        <div class="header-container">
+          <h3>Coalition Builder</h3>
+          <div class="tab-switcher">
+            <div class="tab-slider" id="slider"></div>
+            <button class="tab-button active" onclick="switchTab(0)">Nowcast</button>
+            <button class="tab-button" onclick="switchTab(1)">2021</button>
+          </div>
+        </div>
 
-  .tab-indicator {
-    position: absolute;
-    top: 6px;
-    left: 10px;
-    bottom: 6px;
-    width: calc((100% - 20px) / 2); /* now only 2 tabs */
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-    transition: transform 0.35s cubic-bezier(0.25, 1, 0.3, 1);
-  }
+        <div class="legend" id="legend"></div>
+        <div class="bar-container">
+          <div class="coalition-overlay" id="overlay"></div>
+        </div>
+        <div class="counter" id="counter">0 / 129</div>
+      </div>
 
-  .tab-content {
-    display: none;
-    padding: 0rem;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
-
-  iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: none;
-    border-radius: 8px;
-  }
-</style>
-</head>
-<body>
-
-<div class="tab-container">
-  <div class="tabs">
-    <div class="tab-indicator"></div>
-    <button class="tab-btn active" data-tab="tab1">Votes</button>
-    <button class="tab-btn" data-tab="tab2">Seats</button>
+    </div>
   </div>
-</div>
 
-<!-- Tab 1 -->
-<div id="tab1" class="tab-content active">
-  <div class="flourish-embed flourish-chart" data-src="visualisation/24560280">
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-    <noscript><img src="https://public.flourish.studio/visualisation/24560280/thumbnail" alt="chart" /></noscript>
-  </div>
-</div>
-
-<!-- Tab 2 -->
-<div id="tab2" class="tab-content">
-  <div class="flourish-embed flourish-chart" data-src="visualisation/24560334">
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-    <noscript><img src="https://public.flourish.studio/visualisation/24560334/thumbnail" alt="chart" /></noscript>
-  </div>
-</div>
+<script src="https://public.flourish.studio/resources/embed.js"></script>
 
 <script>
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
+  /* Tab switcher (Block A) */
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
   const indicator = document.querySelector(".tab-indicator");
 
-  // Default active tab index
-  let activeIndex = 0;
-  indicator.style.transform = `translateX(${activeIndex * 100}%)`;
-
-  tabButtons.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach(b => b.classList.remove("active"));
-      tabContents.forEach(tc => tc.classList.remove("active"));
+  tabs.forEach((btn, i) => {
+    btn.onclick = () => {
+      tabs.forEach(b => b.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById(btn.dataset.tab).classList.add("active");
+      indicator.style.transform = `translateX(${i * 100}%)`;
+    };
+  });
 
-      activeIndex = index;
-      indicator.style.transform = `translateX(${index * 100}%)`;
+  /* Coalition builder (Block B) */
+  const data = [
+    [{n:"A",s:40,c:"#f00"},{n:"B",s:30,c:"#0f0"}],
+    [{n:"A",s:35,c:"#f00"},{n:"B",s:20,c:"#0f0"}]
+  ];
+
+  let selected = [], tab = 0;
+  const legend = document.getElementById("legend");
+  const overlay = document.getElementById("overlay");
+  const counter = document.getElementById("counter");
+  const slider = document.getElementById("slider");
+
+  function switchTab(i){
+    tab=i;
+    slider.style.transform=`translateX(${i*100}%)`;
+    render();
+  }
+
+  function render(){
+    legend.innerHTML="";
+    overlay.innerHTML="";
+    let total=0;
+
+    data[tab].forEach(p=>{
+      const el=document.createElement("div");
+      el.className="legend-item";
+      el.innerHTML=`<div class="legend-box" style="background:${p.c}"></div>${p.n}`;
+      el.onclick=()=>{selected.includes(p)?selected=[]:selected=[p];render()};
+      legend.appendChild(el);
+      if(selected.includes(p)) total+=p.s;
     });
-  });
+
+    overlay.style.width=(total/129*100)+"%";
+    counter.textContent=`${total} / 129`;
+  }
+  render();
 </script>
 
 </body>
 </html>
-    </div>
-
-    <div class="secondary-block">
-      <!-- RIGHT BLOCK CONTENT -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coalition Builder</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    margin: 0;
-    padding: 20px;
-  }
-
-  /* Title and tab switcher container */
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  h3 {
-    margin: 0;
-  }
-
-  /* Tab switcher styles */
-  .tab-switcher {
-    position: relative;
-    display: flex;
-    background: #f3f3f3;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    height: 34px;
-    min-width: 140px;
-  }
-  .tab-button {
-    flex: 1;
-    padding: 6px 12px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-weight: bold;
-    transition: color 0.25s ease;
-    border-radius: 0; /* Less rounded individual buttons */
-    z-index: 1;
-    position: relative;
-  }
-  .tab-button.active {
-    color: #000;
-  }
-  .tab-slider {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%; /* two tabs */
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    transition: transform 0.25s ease;
-    z-index: 0;
-  }
-
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 6px 10px;
-    background: #f3f3f3;
-    transition: all 0.25s ease;
-    opacity: 0.6;
-    font-weight: normal;
-  }
-  .legend-item:hover {
-    transform: translateY(-1px);
-  }
-  .legend-item.active {
-    opacity: 1;
-    background: #ffffff;
-    border-color: #999;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    font-weight: bold;
-  }
-  .legend-box {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-  }
-
-  .bar-container {
-    position: relative;
-    height: 117px;
-    background: #f0f0f0;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 12px;
-    width: 100%;
-  }
-
-  .coalition-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    display: flex;
-    overflow: hidden;
-    transition: width 1s ease;
-  }
-
-  .segment {
-    height: 100%;
-    flex-shrink: 0;
-    border-radius: 0;
-  }
-
-  .majority-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: repeating-linear-gradient(
-      to bottom,
-      #333,
-      #333 5px,
-      transparent 5px,
-      transparent 10px
-    );
-    left: 50%;
-  }
-
-  .counter {
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  .note {
-    font-size: 13px;
-    color: #555;
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-
-<!-- Header with title and tab switcher aligned -->
-<div class="header-container">
-  <h3>Coalition Builder</h3>
-  <div class="tab-switcher">
-    <div class="tab-slider" id="tab-slider"></div>
-    <button class="tab-button active" onclick="switchTab(0)">Nowcast</button>
-    <button class="tab-button" onclick="switchTab(1)">2021</button>
-  </div>
-</div>
-
-<div class="legend" id="legend"></div>
-
-<div class="bar-container" id="bar">
-  <div class="coalition-overlay" id="coalition-overlay"></div>
-  <div class="majority-line" title="Majority (326 seats)"></div>
-</div>
-
-<div class="counter" id="counter">0 / 129</div>
-
-<script>
-const datasets = [
-  [
-    { name: "GRN", seats: 13, color: "#66BB3C" },
-    { name: "SNP", seats: 63, color: "#FFF176" },
-    { name: "LAB", seats: 18, color: "#E40046" },
-    { name: "LDM", seats: 7, color: "#FAA61A" },
-    { name: "CON", seats: 10, color: "#0072CE" },
-    { name: "RFM", seats: 18, color: "#3DDCFC" },
-  ],
-  [
-    { name: "GRN", seats: 8, color: "#66BB3C" },
-    { name: "SNP", seats: 64, color: "#FFF176" },
-    { name: "LAB", seats: 22, color: "#E40046" },
-    { name: "LDM", seats: 4, color: "#FAA61A" },
-    { name: "CON", seats: 31, color: "#0072CE" },
-    { name: "RFM", seats: 0, color: "#3DDCFC" },
-  ]
-];
-
-const totalSeats = 129;
-const majority = 65;
-let selected = [];
-let activeTab = 0;
-
-const legend = document.getElementById("legend");
-const overlay = document.getElementById("coalition-overlay");
-const counter = document.getElementById("counter");
-const slider = document.getElementById("tab-slider");
-
-function switchTab(index) {
-  activeTab = index;
-  document.querySelectorAll(".tab-button").forEach((btn, i) => {
-    btn.classList.toggle("active", i === index);
-  });
-  // move slider
-  slider.style.transform = `translateX(${index * 100}%)`;
-  render();
-}
-
-function toggleParty(name) {
-  if (selected.includes(name)) {
-    selected = selected.filter(n => n !== name);
-  } else {
-    selected.push(name);
-  }
-  render();
-}
-
-function render() {
-  overlay.innerHTML = "";
-
-  const parties = datasets[activeTab];
-
-  // rebuild legend
-  legend.innerHTML = "";
-  parties.forEach(p => {
-    const item = document.createElement("div");
-    item.className = "legend-item";
-    item.innerHTML = `<div class="legend-box" style="background:${p.color}"></div> <strong>${p.name}</strong> ${p.seats}`;
-    item.onclick = () => toggleParty(p.name);
-    legend.appendChild(item);
-  });
-
-  // calculate total coalition width only for selected parties present in this dataset
-  const totalSeatsSelected = selected.reduce((sum, n) => {
-    const p = parties.find(x => x.name === n);
-    return p ? sum + p.seats : sum;
-  }, 0);
-  const widthPercent = (totalSeatsSelected / totalSeats) * 100;
-
-  // add segments inside overlay proportionally
-  selected.forEach(pName => {
-    const p = parties.find(x => x.name === pName);
-    if (p) {
-      const seg = document.createElement("div");
-      seg.className = "segment";
-      seg.style.background = p.color;
-      seg.style.flexBasis = (p.seats / totalSeatsSelected) * 100 + "%";
-      overlay.appendChild(seg);
-    }
-  });
-
-  requestAnimationFrame(() => {
-    overlay.style.width = widthPercent + "%";
-  });
-
-  counter.textContent = `${totalSeatsSelected} / ${totalSeats}`;
-  counter.style.color = totalSeatsSelected >= majority ? "#2BA84A" : "#000";
-
-  document.querySelectorAll(".legend-item").forEach(el => {
-    const name = el.querySelector("strong").textContent;
-    el.classList.toggle("active", selected.includes(name));
-  });
-}
-
-render();
-</script>
-
-</body>
-</html>
-    </div>
-
-  </div>
-</div>
-
