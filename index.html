@@ -41,6 +41,11 @@
       position: relative;
     }
 
+    .graph-container {
+      width: 100%;
+      position: relative;
+    }
+
     iframe {
       width: 100%;
       border: none;
@@ -59,6 +64,13 @@
 
       .bar-container {
         aspect-ratio: 3.5 / 1;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .graph-container {
+        aspect-ratio: 1.7 / 1;
         max-width: 1000px;
         margin: 0 auto;
         position: relative;
@@ -87,6 +99,12 @@
         position: relative;
       }
 
+      .graph-container {
+        aspect-ratio: 2.5 / 2;
+        width: 100%;
+        position: relative;
+      }
+
       iframe {
         position: absolute;
         top: 0;
@@ -104,6 +122,10 @@
 
       <div class="bar-container">
     <iframe src="https://flo.uri.sh/visualisation/19631640/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
+
+      <div class="graph-container">
+    <iframe src="https://flo.uri.sh/visualisation/27218676/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 </body>
 </html>
