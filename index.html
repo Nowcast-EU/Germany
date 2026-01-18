@@ -105,13 +105,6 @@
         position: relative;
       }
 
- .graph-container {
-    aspect-ratio: 2 / 1.25;   /* portrait-safe */
-    width: 100%;
-    position: relative;
-    overflow: hidden;         /* stops spill */
-  }
-
 .flourish-container iframe,
 .bar-container iframe,
 .graph-container iframe {
@@ -120,15 +113,27 @@
   height: 100%;
 }
 
-      /* Parliament chart mobile counter-rotation ONLY */
+/* --- Parliament chart: mobile counter-rotation (corrected) --- */
+.graph-container {
+  position: relative;
+  width: 100%;
+  height: 420px;          /* IMPORTANT: fixed height works better here */
+  overflow: hidden;
+}
+
 .graph-container iframe {
+  position: absolute;
   top: 50%;
   left: 50%;
+
+  /* Cancel Flourish rotation */
   transform: translate(-50%, -50%) rotate(-90deg);
   transform-origin: center center;
-  width: 130%;
+
+  /* After rotation, width must exceed container height */
+  width: 160%;
   height: 100%;
- }
+}
 }
 
 
