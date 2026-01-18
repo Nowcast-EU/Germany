@@ -53,43 +53,43 @@
       display: block;
     }
 
-    /* --- Desktop view --- */
-    @media (min-width: 768px) {
-      .flourish-container {
-        /* Aspect ratio: 1 wide, 1.25 tall */
-        aspect-ratio: 1 / 1.25;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-      }
+/* --- Desktop view --- */
+@media (min-width: 768px) {
 
-      .bar-container {
-        aspect-ratio: 3.5 / 1;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      .graph-container {
-        aspect-ratio: 1.7 / 1;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-  .graph-container iframe {
-    transform: none;
+  .flourish-container {
+    aspect-ratio: 1 / 1.25;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
   }
-      
-    }
+
+  .bar-container {
+    aspect-ratio: 3.5 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .graph-container {
+    aspect-ratio: 1.7 / 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Normalise all embeds */
+  .flourish-container iframe,
+  .bar-container iframe,
+  .graph-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;      /* IMPORTANT: cancel mobile rotation */
+  }
+}
 
     /* --- Mobile view --- */
     @media (max-width: 767px) {
