@@ -101,7 +101,7 @@
       }
 
  .graph-container {
-    aspect-ratio: 1 / 1.25;   /* portrait-safe */
+    aspect-ratio: 2 / 1.25;   /* portrait-safe */
     width: 100%;
     position: relative;
     overflow: hidden;         /* stops spill */
@@ -114,24 +114,32 @@
     width: 100%;
     height: 100%;
   }
-
-  /* --- Kill Flourish Parliament auto-rotation --- */
-  .graph-container iframe {
-    transform: none !important;
-  }
-
-  .graph-container iframe svg,
-  .graph-container iframe canvas {
-    transform: none !important;
-    rotate: 0deg !important;
-      }
-    }
+}
 
     @media (max-width: 767px) {
-  .flourish-parliament svg {
-    transform: none !important;
+
+  .graph-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.25;   /* visible area */
+    overflow: hidden;
+  }
+
+  .graph-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    /* Counter-rotate Flourish */
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center center;
+
+    /* Swap dimensions after rotation */
+    width: 125%;
+    height: 100%;
   }
 }
+
 
   </style>
 </head>
@@ -144,11 +152,9 @@
     <iframe src="https://flo.uri.sh/visualisation/19631640/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 
-<div class="graph-container">
-  <div class="flourish-embed flourish-parliament" data-src="visualisation/27264282"></div>
-</div>
-
-<script src="https://public.flourish.studio/resources/embed.js"></script>
+      <div class="graph-container">
+    <iframe src="https://flo.uri.sh/visualisation/27264282/embed" scrolling="no" frameborder="0"></iframe>
+  </div>
 
 </body>
 </html>
