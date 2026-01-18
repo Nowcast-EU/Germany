@@ -44,6 +44,7 @@
     .graph-container {
       width: 100%;
       position: relative;
+      overflow: hidden;
     }
 
     iframe {
@@ -99,18 +100,30 @@
         position: relative;
       }
 
-      .graph-container {
-        aspect-ratio: 2.5 / 2;
-        width: 100%;
-        position: relative;
-      }
+ .graph-container {
+    aspect-ratio: 1 / 1.25;   /* portrait-safe */
+    width: 100%;
+    position: relative;
+    overflow: hidden;         /* stops spill */
+  }
 
-      iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --- Kill Flourish Parliament auto-rotation --- */
+  .graph-container iframe {
+    transform: none !important;
+  }
+
+  .graph-container iframe svg,
+  .graph-container iframe canvas {
+    transform: none !important;
+    rotate: 0deg !important;
       }
     }
   </style>
@@ -125,7 +138,7 @@
   </div>
 
       <div class="graph-container">
-    <iframe src="https://flo.uri.sh/visualisation/27218676/embed" scrolling="no" frameborder="0"></iframe>
+    <iframe src="https://flo.uri.sh/visualisation/27264282/embed" scrolling="no" frameborder="0"></iframe>
   </div>
 </body>
 </html>
