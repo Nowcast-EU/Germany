@@ -3034,8 +3034,8 @@ tbody.innerHTML = parties.map((p, i) => {
     </tr>
   `;
 
-  // --- Insert OTH row right after Linke ---
-  if (p.name === "Linke") {
+  // --- Insert OTH row right after FW ---
+  if (p.name === "FW") {
     // find OTH’s index
     const othIndex = parties.findIndex(x => x.name === "OTH");
     const oth = parties[othIndex];
@@ -3056,12 +3056,6 @@ tbody.innerHTML = parties.map((p, i) => {
       `;
     }
 
-    // now add the divider row for Scotland
-    row += `<tr class="divider-row"><td colspan="5"><i>Vote share in Scotland and Wales</i></td></tr>`;
-  }
-
-  if (p.name === "FDP") {
-    row += `<tr class="divider-row"><td colspan="5"><i>Vote share in Northern Ireland</i></td></tr>`;
   }
 
   return row;
