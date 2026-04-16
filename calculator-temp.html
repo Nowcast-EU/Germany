@@ -3124,15 +3124,9 @@ inputs.forEach((input, index) => {
 function updateVoteTotal() {
   // --- Weight multipliers for total and OTH calculation ---
   const WEIGHTS = {
-    "BSW": 0.084, 
-    "FDP": 0.05,   
-    "FDP": 0.05,   
-    "FW": 0.025,  
-    "DUP": 0.025,
-    "ALL": 0.025,
-    "UUP": 0.025,
-    "SDL": 0.025,
-    "TUV": 0.025
+    "BSW": 1.0, 
+    "FDP": 1.0,     
+    "FW": 1.0  
   };
 
   let weightedSum = 0;
