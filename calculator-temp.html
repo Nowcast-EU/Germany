@@ -2252,8 +2252,20 @@ function calculatePR() {
     votes[p.name] = parseFloat(document.getElementById(`votes-${i}`).value) || 0;
   });
 
-  // Apply 5% threshold
-  const eligible = parties.filter(p => votes[p.name] >= PR_THRESHOLD && p.name !== "OTH");
+// Count FPTP constituency wins per party
+  const constituencyWins = {};
+  PARTIES.forEach(p => constituencyWins[p] = 0);
+  (window.latestConstituencyResults || []).forEach(row => {
+    let best = null, bestVote = -1;
+    PARTIES.forEach(p => { if ((row[p] || 0) > bestVote) { bestVote = row[p]; best = p; } });
+    if (best) constituencyWins[best]++;
+  });
+
+  // Apply 5% threshold OR 3+ constituency wins (Grundmandatsklausel)
+  const eligible = parties.filter(p =>
+    p.name !== "OTH" &&
+    (votes[p.name] >= PR_THRESHOLD || constituencyWins[p.name] >= 3)
+  );
 
   const prSeats = {};
   parties.forEach(p => prSeats[p.name] = 0);
