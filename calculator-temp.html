@@ -1729,7 +1729,7 @@ const GE2024 = {"Union":28.5,"AfD":20.8,"SPD":16.4,"Grüne":11.6,"Linke":8.8,"BS
 const DEFAULTS = {"Union":25.0,"AfD":27.0,"SPD":13.0,"Grüne":12.0,"Linke":12.0,"BSW":4.0,"FDP":3.0,"FW":1.5,"OTH":3.6};
 const PREV_2023 = {"Union":208,"AfD":152,"SPD":120,"Grüne":85,"Linke":64,"BSW":0,"FDP":0,"FW":0,"OTH":1};
 
-const PR_TOTAL_SEATS = 630;
+const PR_TOTAL_SEATS = 629;
 const PR_THRESHOLD = 5; // percent
 
 const PARTY_RANGES = {
@@ -2223,6 +2223,7 @@ perConst.forEach(row => {
 // But the TABLE and coalition builder use PR seats
 
 const prSeats = calculatePR();
+prSeats["OTH"] = 1;
 
 PARTIES.forEach((n, i) => {
   const seats = prSeats[n] || 0;
