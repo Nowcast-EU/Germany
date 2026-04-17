@@ -1729,6 +1729,9 @@ const GE2024 = {"Union":28.5,"AfD":20.8,"SPD":16.4,"Grüne":11.6,"Linke":8.8,"BS
 const DEFAULTS = {"Union":25.0,"AfD":27.0,"SPD":13.0,"Grüne":12.0,"Linke":12.0,"BSW":4.0,"FDP":3.0,"FW":1.5,"OTH":3.6};
 const PREV_2023 = {"Union":208,"AfD":152,"SPD":120,"Grüne":85,"Linke":64,"BSW":0,"FDP":0,"FW":0,"OTH":1};
 
+const PR_TOTAL_SEATS = 630;
+const PR_THRESHOLD = 5; // percent
+
   // ---- Vote concentration (adjustable per party) ----
 // Positive values increase local strength when local > national baseline,
 // negative values reduce local strength in both comparisons.
@@ -2205,35 +2208,69 @@ perConst.forEach(row => {
   PARTIES.forEach(p => totals[p] += (s[p] || 0));
 });
 
-  PARTIES.forEach((n,i)=>{
-    const seats=totals[n];
-    document.getElementById(`seats-${i}`).textContent=seats;
-    parties[i].final=seats;
+// FPTP totals still drive the MAP (via window.latestConstituencyResults)
+// But the TABLE and coalition builder use PR seats
 
-    const diff=seats-(PREV_2023[n]||0);
-    const diffCell=document.getElementById(`diff-${i}`);
-    if(diff>0){diffCell.textContent=`+${diff}`;diffCell.className='diff-column positive';}
-    else if(diff<0){diffCell.textContent=`${diff}`;diffCell.className='diff-column negative';}
-    else{diffCell.textContent='(=)';diffCell.className='diff-column equal';}
-  });
+const prSeats = calculatePR();
 
-  document.getElementById('total-seats').textContent=Object.values(totals).reduce((a,b)=>a+b,0);
-  document.getElementById('calculate').style.background='#008500';
-  updateCoalitionFromTotals(totals);
+PARTIES.forEach((n, i) => {
+  const seats = prSeats[n] || 0;
+  document.getElementById(`seats-${i}`).textContent = seats;
+  parties[i].final = seats;
+
+  const diff = seats - (PREV_2023[n] || 0);
+  const diffCell = document.getElementById(`diff-${i}`);
+  if (diff > 0) { diffCell.textContent = `+${diff}`; diffCell.className = 'diff-column positive'; }
+  else if (diff < 0) { diffCell.textContent = `${diff}`; diffCell.className = 'diff-column negative'; }
+  else { diffCell.textContent = '(=)'; diffCell.className = 'diff-column equal'; }
+});
+
+document.getElementById('total-seats').textContent = PR_TOTAL_SEATS;
+document.getElementById('calculate').style.background = '#008500';
+updateCoalitionFromTotals(prSeats);
   
-  // ---- Dynamic majority threshold (UK style) ----
-const totalSeats = Object.values(totals).reduce((a,b)=>a+b,0);
-const sfnSeats = totals["FW"] || 0;
-const majoritySeats = Math.ceil((totalSeats - sfnSeats) / 2);
-
-// update the note text dynamically
-document.querySelector(".note").textContent = `Note: functional majority = ${majoritySeats} seats`;
+document.querySelector(".note").textContent = `Majority = 316 seats`;
 
 // --- auto-refresh constituency view if one is selected ---
 const currentName = document.getElementById("constituency-search").value.trim();
 if (currentName) showConstituencyResults(currentName);
 
 if (window.updateMapColors) window.updateMapColors();
+}
+
+function calculatePR() {
+  // Read current vote inputs
+  const votes = {};
+  parties.forEach((p, i) => {
+    votes[p.name] = parseFloat(document.getElementById(`votes-${i}`).value) || 0;
+  });
+
+  // Apply 5% threshold
+  const eligible = parties.filter(p => votes[p.name] >= PR_THRESHOLD && p.name !== "OTH");
+
+  const prSeats = {};
+  parties.forEach(p => prSeats[p.name] = 0);
+
+  if (eligible.length > 0) {
+    const totalEligibleVotes = eligible.reduce((s, p) => s + votes[p.name], 0);
+
+    // Largest remainder (Hare quota) method — same as your PR calculator
+    eligible.forEach(p => {
+      prSeats[p.name] = Math.floor((votes[p.name] / totalEligibleVotes) * PR_TOTAL_SEATS);
+    });
+
+    let assigned = eligible.reduce((s, p) => s + prSeats[p.name], 0);
+    let remaining = PR_TOTAL_SEATS - assigned;
+    const remainders = eligible
+      .map(p => ({ name: p.name, rem: (votes[p.name] / totalEligibleVotes) * PR_TOTAL_SEATS - prSeats[p.name] }))
+      .sort((a, b) => b.rem - a.rem);
+
+    for (let i = 0; i < remaining; i++) {
+      prSeats[remainders[i % remainders.length].name]++;
+    }
+  }
+
+  return prSeats;
 }
 
 /* ---- Reset ---- */
