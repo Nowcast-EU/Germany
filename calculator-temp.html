@@ -2302,25 +2302,6 @@ document.getElementById('randomise').addEventListener('click', () => {
     if (input) input.value = gbValues[j].toFixed(1);
   });
 
-  // --- BSW: random between 5.0 and 70.0 ---
-  const snpIndex = parties.findIndex(p => p.name === "BSW");
-  const snpInput = document.getElementById(`votes-${snpIndex}`);
-  if (snpInput) snpInput.value = (Math.floor((5 + Math.random() * 50) * 10) / 10).toFixed(1);
-
-  // --- FDP: random between 5.0 and 70.0 ---
-  const plcIndex = parties.findIndex(p => p.name === "FDP");
-  const plcInput = document.getElementById(`votes-${plcIndex}`);
-  if (plcInput) plcInput.value = (Math.floor((5 + Math.random() * 50) * 10) / 10).toFixed(1);
-
-  // --- NI parties: FW, DUP, ALL, SDL, UUP, TUV — guaranteed total of 96 ---
-  const niParties = ["FW", "DUP", "ALL", "SDL", "UUP", "TUV"];
-  const niValues = randomNormalised(niParties.length, 96);
-  niParties.forEach((name, j) => {
-    const i = parties.findIndex(p => p.name === name);
-    const input = document.getElementById(`votes-${i}`);
-    if (input) input.value = niValues[j].toFixed(1);
-  });
-
   // --- Vote concentration: random displayed value between -50.0 and 50.0 ---
   CONC_EDITABLE.forEach(p => {
     const randomDisplayVal = Math.round((Math.random() * 100 - 50) * 10) / 10;
