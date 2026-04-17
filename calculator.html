@@ -2657,19 +2657,7 @@ function partyColor(partyCode) {
   return PARTY_COLORS[partyCode] || "#000000";
 }
 
-// build span HTML
-const winnerHTML = `<span class="party coloured" style="--party-color:${partyColor(winner.name)}">${winnerAlias}</span>`;
-const incumbentHTML = incumbent ? `<span class="party coloured" style="--party-color:${partyColor(incumbent)}">${incumbentAlias}</span>` : "";
 
-if (incumbent) {
-  if (incumbent === winner.name) {
-    winnerText.innerHTML = `${winnerHTML} HOLD`;
-  } else {
-    winnerText.innerHTML = `${winnerHTML} GAIN from ${incumbentHTML}`;
-  }
-} else {
-  winnerText.innerHTML = `${name}: ${winnerHTML}`;
-}
 }  
 
 /* ---- Floating GB→UK Mini Calculator ---- */
