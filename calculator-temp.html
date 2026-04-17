@@ -2945,7 +2945,7 @@ helpBtn.addEventListener("click", () => {
     });
     return lu;
   }
-  function sty(lu){ return function(f){ var w=lu[f.properties.NAME]; return {fillColor:w?(PARTY_COLORS[w]||'#ccc'):'#ccc',fillOpacity:0.82,color:'#fff',weight:0.6}; }; }
+  function sty(lu){ return function(f){ var w=lu[f.properties.name]; return {fillColor:w?(PARTY_COLORS[w]||'#ccc'):'#ccc',fillOpacity:0.82,color:'#fff',weight:0.6}; }; }
   function initMap() {
     var defaultZoom = window.innerWidth < 768 ? 5 : 6;
     map = L.map('constituency-map',{
@@ -2962,13 +2962,13 @@ helpBtn.addEventListener("click", () => {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd'}).addTo(map);
     layer = L.geoJSON(GJ,{style:sty(winners()),onEachFeature:function(f,l){
       l.on({
-        mouseover:function(e){e.target.setStyle({weight:2.5,color:'#222',fillOpacity:0.97});e.target.bringToFront();var w=winners()[f.properties.NAME]||'?';l.bindTooltip('<strong>'+f.properties.NAME+'</strong><br>'+((window.PARTY_ALIASES&&window.PARTY_ALIASES[w])||w),{sticky:true,className:'map-tooltip-clean'}).openTooltip();},
+        mouseover:function(e){e.target.setStyle({weight:2.5,color:'#222',fillOpacity:0.97});e.target.bringToFront();var w=winners()[f.properties.name]||'?';l.bindTooltip('<strong>'+f.properties.name+'</strong><br>'+((window.PARTY_ALIASES&&window.PARTY_ALIASES[w])||w),{sticky:true,className:'map-tooltip-clean'}).openTooltip();},
 
 mouseout: function(e) {
     e.target.setStyle(sty(winners())(f));
     e.target.closeTooltip();
 },
-        click:function(){var el=document.getElementById('constituency-search');if(el){el.value=f.properties.NAME;showConstituencyResults(f.properties.NAME);document.getElementById('constituency-section').scrollIntoView({behavior:'smooth'});}}
+        click:function(){var el=document.getElementById('constituency-search');if(el){el.value=f.properties.name;showConstituencyResults(f.properties.name);document.getElementById('constituency-section').scrollIntoView({behavior:'smooth'});}}
       });
     }}).addTo(map);
     window.updateMapColors=function(){if(layer)layer.setStyle(sty(winners()));};
