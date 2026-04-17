@@ -1728,6 +1728,17 @@ const PREV_2023 = {"Union":208,"AfD":152,"SPD":120,"Grüne":85,"Linke":64,"BSW":
 const PR_TOTAL_SEATS = 630;
 const PR_THRESHOLD = 5; // percent
 
+const PARTY_RANGES = {
+  "Union": [0, 100],
+  "AfD": [0, 100],
+  "SPD": [0, 100],
+  "Grüne": [0, 100],
+  "Linke": [0, 100],
+  "BSW": [0, 70],
+  "FDP": [0, 60],
+  "FW": [0, 50]
+};
+
   // ---- Vote concentration (adjustable per party) ----
 // Positive values increase local strength when local > national baseline,
 // negative values reduce local strength in both comparisons.
@@ -2309,21 +2320,25 @@ document.getElementById('reset').addEventListener('click', () => {
 document.getElementById('randomise').addEventListener('click', () => {
 
   // Helper: normalise n random values to exactly 'total', displayed as percentages
-  function randomNormalised(n, total) {
-    const raws = Array.from({length: n}, () => Math.random());
-    const sum = raws.reduce((a, b) => a + b, 0);
-    // Divide each by sum (normalise to 1.0), multiply by total (e.g. 96)
-    // then multiply by 10, floor, divide by 10 to get clean 1dp values
-    const scaled = raws.map(v => Math.floor((v / sum) * total * 10) / 10);
-    // The last value takes exactly whatever is left to guarantee the total
-    const runningSum = scaled.slice(0, -1).reduce((a, b) => a + b, 0);
-    scaled[scaled.length - 1] = Math.round((total - runningSum) * 10) / 10;
-    return scaled;
-  }
+function randomNormalisedWithRanges(parties, total) {
+  const raws = parties.map(name => {
+    const [min, max] = PARTY_RANGES[name];
+    return min + Math.random() * (max - min);
+  });
+
+  const sum = raws.reduce((a, b) => a + b, 0);
+
+  const scaled = raws.map(v => Math.floor((v / sum) * total * 10) / 10);
+
+  const runningSum = scaled.slice(0, -1).reduce((a, b) => a + b, 0);
+  scaled[scaled.length - 1] = Math.round((total - runningSum) * 10) / 10;
+
+  return scaled;
+}
 
   // --- GB main parties: Union, AfD, SPD, Grüne, Linke — guaranteed total of 96 ---
   const gbParties = ["Union", "AfD", "SPD", "Grüne", "Linke", "BSW", "FDP", "FW"];
-  const gbValues = randomNormalised(gbParties.length, 98);
+const gbValues = randomNormalisedWithRanges(gbParties, 98);
   gbParties.forEach((name, j) => {
     const i = parties.findIndex(p => p.name === name);
     const input = document.getElementById(`votes-${i}`);
