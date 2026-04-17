@@ -784,8 +784,10 @@ tfoot td {
   <!-- Constituency Map -->
 <div id="map-section" style="margin-top:48px;">
   <div id="constituency-map" style="border-radius:10px; overflow:hidden; border:1px solid #e2e8f0;"></div>
-  <p style="text-align:center; font-size:12px; color:#888; margin-top:6px;">Click a constituency to see its results above.</p>
-</div>
+<div style="display:flex; align-items:center; justify-content:space-between; margin-top:6px;">
+    <p style="font-size:12px; color:#888; margin:0;">Click a constituency to see its results above.</p>
+    <button onclick="calculate()" style="background:#008500; color:#fff; border:none; border-radius:6px; padding:5px 12px; font-size:12px; cursor:pointer;">Calculate</button>
+  </div>
 
 <p class="disclaimer">
   ** This calculator is a simplified version of the Nowcast EU model. Certain features that can't be included such as vote concentration, incumbent effects, and demographic weighting mean some projections may differ from our regular tracker.
