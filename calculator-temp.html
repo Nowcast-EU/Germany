@@ -720,10 +720,10 @@ tfoot td {
   <thead>
     <tr>
       <th>Party</th>
-      <th>2024</th>
+      <th>2025</th>
       <th>Votes (%)</th>
       <th>Seats</th>
-      <th>+/- 2024</th>
+      <th>+/- 2025</th>
     </tr>
   </thead>
   <tbody id="tbody"></tbody>
@@ -755,7 +755,7 @@ tfoot td {
   <div class="tab-switcher">
     <div class="tab-pill" id="tab-pill"></div>
     <button class="tab-btn active" id="tab-result">Result</button>
-    <button class="tab-btn" id="tab-2023">2024</button>
+    <button class="tab-btn" id="tab-2023">2025</button>
   </div>
 </div>
 
@@ -1927,19 +1927,14 @@ function bindConcentrationInputs() {
 
 // Full party name aliases
 const PARTY_ALIASES = {
-  "Union": "Labour",
-  "AfD": "Conservative",
-  "SPD": "Reform UK",
-  "Grüne": "Liberal Democrat",
-  "Linke": "Green",
+  "Union": "CDU/CSU",
+  "AfD": "AfD",
+  "SPD": "SPD",
+  "Grüne": "Grüne",
+  "Linke": "Die Linke",
   "BSW": "BSW",
-  "FDP": "Plaid Cymru",
-  "FW": "Sinn Féin",
-  "DUP": "DUP",
-  "ALL": "Alliance",
-  "UUP": "UUP",
-  "SDL": "SDLP",
-  "TUV": "TUV",
+  "FDP": "FDP",
+  "FW": "FW",
   "OTH": "Independent/Other"
 };
 
@@ -2324,7 +2319,7 @@ document.addEventListener('DOMContentLoaded', () => calculate());
 });
 
 /* ---- Coalition Builder ---- */
-const COAL_TOTAL=650,COAL_MAJ=326;
+const COAL_TOTAL=630,COAL_MAJ=316;
 let selected=[];
 const legend=document.getElementById("legend"),overlay=document.getElementById("coalition-overlay"),counter=document.getElementById("counter");
 
