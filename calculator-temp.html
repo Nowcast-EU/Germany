@@ -3024,21 +3024,6 @@ helpBtn.addEventListener("click", () => {
 });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd'}).addTo(map);
 
-    L.Control.ResetView = L.Control.extend({
-      onAdd: function(map) {
-        const btn = L.DomUtil.create('button', 'leaflet-bar leaflet-control-reset');
-        btn.innerHTML = '◎';
-        btn.title = 'Reset view';
-        btn.style.cssText = 'width:26px;height:26px;font-size:15px;cursor:pointer;background:#fff;border:none;display:flex;align-items:center;justify-content:center;';
-        L.DomEvent.on(btn, 'click', function(e) {
-          L.DomEvent.stopPropagation(e);
-          map.setView([51.3, 10.3], defaultZoom);
-        });
-        return btn;
-      }
-    });
-    new L.Control.ResetView({ position: 'topleft' }).addTo(map);
-
     layer = L.geoJSON(GJ,{style:sty(winners()),onEachFeature:function(f,l){
       l.on({
         mouseover:function(e){e.target.setStyle({weight:2.5,color:'#222',fillOpacity:0.97});e.target.bringToFront();var w=winners()[f.properties.name]||'?';l.bindTooltip('<strong>'+f.properties.name+'</strong><br>'+((window.PARTY_ALIASES&&window.PARTY_ALIASES[w])||w),{sticky:true,className:'map-tooltip-clean'}).openTooltip();},
