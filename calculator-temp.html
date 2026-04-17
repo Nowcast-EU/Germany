@@ -2294,8 +2294,8 @@ document.getElementById('randomise').addEventListener('click', () => {
   }
 
   // --- GB main parties: Union, AfD, SPD, Grüne, Linke — guaranteed total of 96 ---
-  const gbParties = ["Union", "AfD", "SPD", "Grüne", "Linke"];
-  const gbValues = randomNormalised(gbParties.length, 90);
+  const gbParties = ["Union", "AfD", "SPD", "Grüne", "Linke", "BSW", "FDP", "FW"];
+  const gbValues = randomNormalised(gbParties.length, 98);
   gbParties.forEach((name, j) => {
     const i = parties.findIndex(p => p.name === name);
     const input = document.getElementById(`votes-${i}`);
