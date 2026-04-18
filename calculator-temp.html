@@ -709,7 +709,7 @@ tfoot td {
 @media (max-width: 768px) {
   #settings-badge {
     bottom: 60px;
-    right: 15px;
+    right: 12px;
   }
 }
 
@@ -2421,12 +2421,6 @@ document.addEventListener('DOMContentLoaded', () => calculate());
   bindConcentrationInputs();
 });
 
-CONC_EDITABLE.forEach(p => {
-  const concInput = document.getElementById(`conc-${p}`);
-  const incInput = document.getElementById(`inc-${p}`);
-  if (concInput) concInput.addEventListener('input', () => settingsBadge.style.display = 'none');
-  if (incInput) incInput.addEventListener('input', () => settingsBadge.style.display = 'none');
-});
 
 /* ---- Coalition Builder ---- */
 const COAL_TOTAL=630,COAL_MAJ=316;
