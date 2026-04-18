@@ -696,6 +696,23 @@ tfoot td {
     display: none;
 }
 
+#settings-badge {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  font-size: 20px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #settings-badge {
+    bottom: 60px;
+    right: 12px;
+  }
+}
+
 </style>
 </head>
 
@@ -799,6 +816,8 @@ tfoot td {
 <button id="help-button" aria-label="Settings" title="Settings" type="button">
   <img id="help-icon" src="https://raw.githubusercontent.com/Nowcast-EU/United-Kingdom/refs/heads/main/cog.svg" alt="" />
 </button>
+
+<span id="settings-badge">❗</span>
 
 <!-- Vote Concentration Editor -->
 <div id="help-panel">
@@ -2375,6 +2394,23 @@ const gbValues = randomNormalisedWithRanges(gbParties, 98);
   updateVoteTotal();
   calculate();
 });
+
+const settingsBadge = document.getElementById('settings-badge');
+
+document.getElementById('randomise').addEventListener('click', () => {
+  settingsBadge.style.display = 'block';
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  settingsBadge.style.display = 'none';
+});
+
+parties.forEach((p, i) => {
+  const input = document.getElementById(`votes-${i}`);
+  if (input) input.addEventListener('input', () => {
+    settingsBadge.style.display = 'none';
+  });
+});
   
 document.getElementById('calculate').addEventListener('click', calculate);
 renderTable();
@@ -2384,6 +2420,7 @@ document.addEventListener('DOMContentLoaded', () => calculate());
   renderConcentrationTable();
   bindConcentrationInputs();
 });
+
 
 /* ---- Coalition Builder ---- */
 const COAL_TOTAL=630,COAL_MAJ=316;
