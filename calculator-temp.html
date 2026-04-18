@@ -696,6 +696,23 @@ tfoot td {
     display: none;
 }
 
+#settings-badge {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  font-size: 20px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #settings-badge {
+    bottom: 60px;
+    right: 15px;
+  }
+}
+
 </style>
 </head>
 
@@ -800,7 +817,7 @@ tfoot td {
   <img id="help-icon" src="https://raw.githubusercontent.com/Nowcast-EU/United-Kingdom/refs/heads/main/cog.svg" alt="" />
 </button>
 
-<span id="settings-badge" style="display:none; position:fixed; bottom:60px; right:20px; font-size:20px; z-index:1001; pointer-events:none;">❗</span>
+<span id="settings-badge">❗</span>
 
 <!-- Vote Concentration Editor -->
 <div id="help-panel">
@@ -2402,6 +2419,13 @@ document.addEventListener('DOMContentLoaded', () => calculate());
   document.addEventListener("DOMContentLoaded", () => {
   renderConcentrationTable();
   bindConcentrationInputs();
+});
+
+CONC_EDITABLE.forEach(p => {
+  const concInput = document.getElementById(`conc-${p}`);
+  const incInput = document.getElementById(`inc-${p}`);
+  if (concInput) concInput.addEventListener('input', () => settingsBadge.style.display = 'none');
+  if (incInput) incInput.addEventListener('input', () => settingsBadge.style.display = 'none');
 });
 
 /* ---- Coalition Builder ---- */
