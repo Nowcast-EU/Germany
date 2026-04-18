@@ -2439,11 +2439,6 @@ function updateCoalitionFromTotals(t){lastTotalsCache=t;renderCoalition(t);}
 function renderCoalition(t){
   if(!t)return;
   
-    // ---- Update majority line dynamically whenever coalition view updates ----
-  const totalSeats = Object.values(t).reduce((a,b)=>a+b,0);
-  const sfnSeats = t["FW"] || 0;
-  const majoritySeats = Math.ceil((totalSeats - sfnSeats) / 2);
-  document.querySelector(".note").textContent = `Note: functional majority = ${majoritySeats} seats`;
   
 overlay.innerHTML = "";
 legend.innerHTML = "";
