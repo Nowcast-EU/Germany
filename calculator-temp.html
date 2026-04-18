@@ -800,6 +800,8 @@ tfoot td {
   <img id="help-icon" src="https://raw.githubusercontent.com/Nowcast-EU/United-Kingdom/refs/heads/main/cog.svg" alt="" />
 </button>
 
+<span id="settings-badge" style="display:none; position:fixed; bottom:72px; right:26px; font-size:20px; z-index:1001; pointer-events:none;">❗</span>
+
 <!-- Vote Concentration Editor -->
 <div id="help-panel">
   <h4>Additional Settings (%)</h4>
@@ -1728,7 +1730,7 @@ const CONSTITUENCY_INCUMBENTS = {
 const PARTIES = ["Union", "AfD", "SPD", "Grüne", "Linke", "BSW", "FDP", "FW", "OTH"];
 const PARTY_COLORS = {"Union":"#000000","AfD":"#18CCFF","SPD":"#EB001F","Grüne":"#65A12D","Linke":"#F76BEE","BSW":"#AB01D4","FDP":"#FFD700","FW":"#FF9201","OTH":"#DADADA"};
 const GE2024 = {"Union":28.5,"AfD":20.8,"SPD":16.4,"Grüne":11.6,"Linke":8.8,"BSW":5.0,"FDP":4.3,"FW":1.6,"OTH":3.0};
-const DEFAULTS = {"Union":25.0,"AfD":27.0,"SPD":13.0,"Grüne":12.0,"Linke":12.0,"BSW":4.0,"FDP":3.0,"FW":1.5,"OTH":3.6};
+const DEFAULTS = {"Union":25.0,"AfD":25.9,"SPD":13.2,"Grüne":13.3,"Linke":10.4,"BSW":3.3,"FDP":3.2,"FW":1.5,"OTH":4.1};
 const PREV_2023 = {"Union":208,"AfD":152,"SPD":120,"Grüne":85,"Linke":64,"BSW":0,"FDP":0,"FW":0,"OTH":1};
 
 const PR_TOTAL_SEATS = 629;
@@ -2375,6 +2377,23 @@ const gbValues = randomNormalisedWithRanges(gbParties, 98);
   updateVoteTotal();
   calculate();
 });
+
+const settingsBadge = document.getElementById('settings-badge');
+
+document.getElementById('randomise').addEventListener('click', () => {
+  settingsBadge.style.display = 'block';
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  settingsBadge.style.display = 'none';
+});
+
+parties.forEach((p, i) => {
+  const input = document.getElementById(`votes-${i}`);
+  if (input) input.addEventListener('input', () => {
+    settingsBadge.style.display = 'none';
+  });
+});
   
 document.getElementById('calculate').addEventListener('click', calculate);
 renderTable();
@@ -2657,19 +2676,7 @@ function partyColor(partyCode) {
   return PARTY_COLORS[partyCode] || "#000000";
 }
 
-// build span HTML
-const winnerHTML = `<span class="party coloured" style="--party-color:${partyColor(winner.name)}">${winnerAlias}</span>`;
-const incumbentHTML = incumbent ? `<span class="party coloured" style="--party-color:${partyColor(incumbent)}">${incumbentAlias}</span>` : "";
 
-if (incumbent) {
-  if (incumbent === winner.name) {
-    winnerText.innerHTML = `${winnerHTML} HOLD`;
-  } else {
-    winnerText.innerHTML = `${winnerHTML} GAIN from ${incumbentHTML}`;
-  }
-} else {
-  winnerText.innerHTML = `${name}: ${winnerHTML}`;
-}
 }  
 
 /* ---- Floating GB→UK Mini Calculator ---- */
